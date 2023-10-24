@@ -11,12 +11,12 @@ class OrderTest {
     @Test
     void shouldHappyTest() throws InterruptedException {
         open("http://localhost:9999/");
-        SelenideElement form = $( ".form.form.form_size_m.form_theme_alfa-on-white");
+        SelenideElement form = $( ".form_theme_alfa-on-white");
         form.$("[data-test-id=name] input").setValue("Василий Иванов");
         form.$("[data-test-id=phone] input").setValue("+79998562875");
         form.$("[data-test-id=agreement]").click();
         form.$(".button.button.button_view_extra.button_size_m.button_theme_alfa-on-white").click();
-        $(".paragraph.paragraph_theme_alfa-on-white").shouldHave(exactText("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время."));
+        $("[data-test-id=order-success").shouldHave(exactText("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время."));
     }
 }
 
